@@ -83,12 +83,18 @@ rspec spec
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 👤 Author <a name="authors"></a>
+## 👤 Authors <a name="authors"></a>
 
  **Mark Rubanza**
 
 - GitHub: [@banzaman](https://github.com/banzaman/)
 - LinkedIn: [Mark Rubanza Anderson](https://www.linkedin.com/in/mark-rubanza-anderson/)
+
+👤 **Giancarlo Dumani**
+
+- GitHub: [@githubhandle](https://github.com/gdumani)
+- Twitter: [@twitterhandle](https://twitter.com/gdumani1)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/gdumani/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
