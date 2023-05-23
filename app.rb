@@ -173,6 +173,7 @@ class App
         book = @books.find { |b| b.title == r['book']['title'] }
         person = @people.find { |p| p.name == r['person']['name'] }
         next if book.nil? || person.nil?
+
         Rental.new(r['date'], person, book)
       end
     else
