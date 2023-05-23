@@ -26,9 +26,9 @@ class Person < Nameable
   end
 
   def to_json(*args)
-    { type: 'Person', name: @name, age: @age, parent_permission: @parent_permission, person_id: @id }.to_json(*args)      
+    { type: 'Person', name: @name, age: @age, parent_permission: @parent_permission,
+      person_id: @id }.to_json(*args)
   end
-
 
   private
 

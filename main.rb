@@ -19,7 +19,7 @@ def main
       app.save_books('books.json')
       app.save_people('people.json')
       app.save_rentals('rentals.json')
-      abort('Thanks for using this app!') 
+      abort('Thanks for using this app!')
     end
     menu.choose choice
   end

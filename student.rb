@@ -15,7 +15,7 @@ class Student < Person
   end
 
   def to_json(*args)
-    { type: 'Student', name: @name, age: @age, parent_permission: @parent_permission, person_id: @id }.to_json(*args)      
+    { type: 'Student', name: @name, age: @age, parent_permission: @parent_permission, person_id: @id }.to_json(*args)
   end
 
   attr_reader :classroom
