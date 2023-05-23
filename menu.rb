@@ -27,15 +27,6 @@ class Menu
     when 4 then @app.create_book
     when 5 then @app.create_rental
     when 6 then @app.list_rentals
-    when 7
-      @app.save_books('books.json')
-      @app.save_people('people.json')
-      @app.save_rentals('rentals.json')
-
-      puts 'Thanks for using this app!'
-      exit
-    else
-      puts 'Invalid option. Please choose again.'
     end
   end
 end
