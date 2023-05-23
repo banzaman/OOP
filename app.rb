@@ -22,11 +22,7 @@ class App
   def list_people
     puts 'No person has registered yet.' if @people.empty?
     @people.each do |person|
-      if person.is_a? Student
-        puts "[Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      elsif person.is_a? Teacher
-        puts "[Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      end
+      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
 
@@ -99,11 +95,7 @@ class App
 
     puts 'Select a person from the following list by number (not id)'
     @people.each_with_index do |person, index|
-      if person.is_a? Student
-        puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      elsif person.is_a? Teacher
-        puts "#{index}) [Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      end
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_id = gets.chomp.to_i
 
@@ -169,13 +161,13 @@ class App
 
   def load_rentals(filename)
     if File.exist?(filename)
-      @rentals = JSON.parse(File.read(filename)).map do |r|
+      @rentals = JSON.parse(File.read(filename)).compact.map do |r|
         book = @books.find { |b| b.title == r['book']['title'] }
         person = @people.find { |p| p.name == r['person']['name'] }
         next if book.nil? || person.nil?
-
         Rental.new(r['date'], person, book)
       end
+      @rentals.compact!
     else
       File.write(filename, '[]')
     end
