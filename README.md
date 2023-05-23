@@ -101,7 +101,7 @@ rspec spec
 ## 🔭 Future Features <a name="future-features"></a>
 
 - Better UI Experience
-- Reduce Time & Space Complexity
+- Integrated tests for each class
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
