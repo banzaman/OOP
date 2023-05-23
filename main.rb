@@ -15,7 +15,12 @@ def main
   loop do
     menu.display_options
     choice = gets.chomp.to_i
-    abort('Thanks for using this app!') if choice == menu.menu_exit
+    if choice == menu.menu_exit
+      app.save_books('books.json')
+      app.save_people('people.json')
+      app.save_rentals('rentals.json')
+      abort('Thanks for using this app!') 
+    end
     menu.choose choice
   end
 end
