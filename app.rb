@@ -3,6 +3,7 @@ require './person'
 require './student'
 require './teacher'
 require './rental'
+require 'json'
 
 class App
   attr_accessor :people, :books, :rentals
@@ -21,11 +22,7 @@ class App
   def list_people
     puts 'No person has registered yet.' if @people.empty?
     @people.each do |person|
-      if person.is_a? Student
-        puts "[Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      elsif person.is_a? Teacher
-        puts "[Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      end
+      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
   end
 
@@ -98,11 +95,7 @@ class App
 
     puts 'Select a person from the following list by number (not id)'
     @people.each_with_index do |person, index|
-      if person.is_a? Student
-        puts "#{index}) [Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      elsif person.is_a? Teacher
-        puts "#{index}) [Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-      end
+      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_id = gets.chomp.to_i
 
@@ -122,6 +115,62 @@ class App
     puts 'Rentals:'
     @rentals.each do |rental|
       puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}" if rental.person.id == id
+    end
+  end
+
+  # Data Preservation Methods ---
+
+  def save_books(filename)
+    File.write(filename, @books.to_json)
+  end
+
+  def save_people(filename)
+    File.write(filename, @people.to_json)
+  end
+
+  def save_rentals(filename)
+    File.write(filename, @rentals.to_json)
+  end
+
+  # Data Loading Methods ---
+
+  def load_books(filename)
+    if File.exist?(filename)
+      @books = JSON.parse(File.read(filename)).map do |b|
+        Book.new(b['title'], b['author'])
+      end
+    else
+      File.write(filename, '[]')
+    end
+  end
+
+  def load_people(filename)
+    if File.exist?(filename)
+      @people = JSON.parse(File.read(filename)).map do |p|
+        if p['type'] == 'Student'
+          Student.new(p['age'], p['name'], p['parent_permission'])
+          # student.id = p['person_id']
+        elsif p['type'] == 'Teacher'
+          Teacher.new(p['age'], p['name'], p['specialization'])
+        end
+      end
+    else
+      File.write(filename, '[]')
+    end
+  end
+
+  def load_rentals(filename)
+    if File.exist?(filename)
+      @rentals = JSON.parse(File.read(filename)).compact.map do |r|
+        book = @books.find { |b| b.title == r['book']['title'] }
+        person = @people.find { |p| p.name == r['person']['name'] }
+        next if book.nil? || person.nil?
+
+        Rental.new(r['date'], person, book)
+      end
+      @rentals.compact!
+    else
+      File.write(filename, '[]')
     end
   end
 end
