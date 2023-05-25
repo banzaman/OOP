@@ -5,7 +5,7 @@ require_relative '../person'
 require 'json'
 
 describe Book do
-  describe '#initialize' do
+  context '#initialize' do
     it 'creates a new Book object' do
       book = Book.new('The Hobbit', 'J.R.R. Tolkien')
       expect(book).to be_an_instance_of(Book)
@@ -23,7 +23,7 @@ describe Book do
     end
   end
 
-  describe '#add_rental' do
+  context '#add_rental' do
     it 'creates a new Rental object' do
       book = Book.new('The Hobbit', 'J.R.R. Tolkien')
       person = Person.new(20, 'John')
