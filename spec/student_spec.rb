@@ -3,7 +3,7 @@ require_relative '../student'
 require_relative '../classroom'
 
 describe Student do
-  describe '#initialize' do
+  context '#initialize' do
     it 'creates a student with the given age, name, and parent permission' do
       student = Student.new(16, 'John', true)
       expect(student.age).to eq(16)
@@ -12,14 +12,14 @@ describe Student do
     end
   end
 
-  describe '#play_hooky' do
+  context '#play_hooky' do
     it 'returns a string with the shrugging person emoji' do
       student = Student.new(16, 'John', true)
       expect(student.play_hooky).to eq('¯\(ツ)/¯')
     end
   end
 
-  describe '#classroom=' do
+  context '#classroom=' do
     it 'assigns the classroom to the student and adds the student to the classroom' do
       classroom = Classroom.new('Math')
       student = Student.new(16, 'John', true)
