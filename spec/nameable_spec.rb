@@ -1,6 +1,6 @@
 require_relative '../nameable'
 
-class Person_without_correct_name < Nameable
+class PersonWithoutCorrectName < Nameable
   attr_reader :id
   attr_accessor :name, :age
 
@@ -15,7 +15,7 @@ end
 
 describe Nameable do
   it 'check allert when correct_name method not present in class' do
-    person = Person.new(33, 'John')
+    person = PersonWithoutCorrectName.new(33, 'John')
     expect { person.correct_name }.to raise_error('You must implement the correct_name method')
   end
 end
