@@ -4,7 +4,7 @@ require_relative '../person'
 require 'rspec'
 
 describe Rental do
-  describe '#initialize' do
+  context '#initialize' do
     it 'creates a new Rental object' do
       rental = Rental.new('2023-04-20', Person.new(18, 'John'), Book.new('Book Title', 'Author Name'))
       expect(rental).to be_an_instance_of(Rental)
