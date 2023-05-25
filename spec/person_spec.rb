@@ -7,14 +7,14 @@ require_relative '../teacher'
 require 'json'
 
 describe Person do
-  describe '#initialize' do
+  context '#initialize' do
     it 'creates a new Person object' do
       person = Person.new(20, 'John', parent_permission: true)
       expect(person).to be_a(Person)
     end
   end
 
-  describe '#can_use_services?' do
+  context '#can_use_services?' do
     context 'when the person is of age' do
       it 'returns true' do
         person = Person.new(25, 'John')
@@ -37,14 +37,14 @@ describe Person do
     end
   end
 
-  describe '#correct_name' do
+  context '#correct_name' do
     it 'returns the name attribute' do
       person = Person.new(20, 'John', parent_permission: true)
       expect(person.correct_name).to eq('John')
     end
   end
 
-  describe '#add_rental' do
+  context '#add_rental' do
     it 'creates a new Rental object' do
       person = Person.new(20, 'John', parent_permission: true)
       book = Book.new('Harry Potter', 'J.K Rowling')
