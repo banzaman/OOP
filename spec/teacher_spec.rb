@@ -2,7 +2,7 @@ require 'rspec'
 require_relative '../teacher'
 
 describe Teacher do
-  describe '#initialize' do
+  context '#initialize' do
     it 'creates a new teacher object with the correct attributes' do
       teacher = Teacher.new(35, 'John Doe', 'Mathematics')
       expect(teacher).to be_an_instance_of(Teacher)
@@ -12,7 +12,7 @@ describe Teacher do
     end
   end
 
-  describe '#can_use_services?' do
+  context '#can_use_services?' do
     it 'returns true for a teacher' do
       teacher = Teacher.new(35, 'John Doe', 'Mathematics')
       expect(teacher.can_use_services?).to be(true)
