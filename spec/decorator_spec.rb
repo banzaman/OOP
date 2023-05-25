@@ -3,7 +3,7 @@ require_relative '../person'
 require_relative '../decorator'
 
 describe 'Decorators' do
-  describe 'Capitalize name decorator' do
+  context 'Capitalize name decorator' do
     it 'creates a new Person object and capitalizes name' do
       person = Person.new(20, 'maximilianus')
       capitalize = CapitalizeDecorator.new person
@@ -12,7 +12,7 @@ describe 'Decorators' do
     end
   end
 
-  describe 'trimm name decorator' do
+  context 'trimm name decorator' do
     it 'creates a new Person object and trimms name to 10 characters' do
       person = Person.new(20, 'maximilianus')
       capitalize = TrimmerDecorator.new person
@@ -21,7 +21,7 @@ describe 'Decorators' do
     end
   end
 
-  describe 'Combined name decorators' do
+  context 'Combined name decorators' do
     it 'creates a new Person object and capitalizes name' do
       person = Person.new(20, 'maximilianus')
       capitalize = CapitalizeDecorator.new person
