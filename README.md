@@ -79,7 +79,7 @@ ruby main.rb
 
 ### Tests <a name="tests">
 ```
-rspec spec
+bundle exec rspec spec
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -101,7 +101,7 @@ rspec spec
 ## 🔭 Future Features <a name="future-features"></a>
 
 - Better UI Experience
-- Integrated tests for each class
+- Improve file storage
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
