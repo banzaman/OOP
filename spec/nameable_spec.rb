@@ -1,4 +1,4 @@
-require_relative '..\nameable'
+require_relative '../nameable'
 
 class Person_without_correct_name < Nameable
   attr_reader :id
