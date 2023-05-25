@@ -3,7 +3,7 @@ require_relative '../student'
 require 'rspec'
 
 describe Classroom do
-  describe '#initialize' do
+  context '#initialize' do
     it 'creates a new Classroom object' do
       classroom = Classroom.new('Class A')
       expect(classroom).to be_an_instance_of(Classroom)
@@ -20,7 +20,7 @@ describe Classroom do
     end
   end
 
-  describe '#add_student' do
+  context '#add_student' do
     it 'adds a new student to the students attribute' do
       classroom = Classroom.new('Class A')
       student = Student.new(16, 'John', true)
